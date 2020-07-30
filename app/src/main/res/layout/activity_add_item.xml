@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    tools:context=".AddItemActivity">
+
+    <TextView
+        style="@style/TextView_newItem"
+        android:text="@string/add_new_meal"
+        android:layout_gravity="center"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        style="@style/TextView_newItem"
+        android:id="@+id/text_view_title"
+        android:text="@string/title_view" />
+
+    <EditText
+        style="@style/EditText_NewItem"
+        android:id="@+id/edit_text_title"
+        android:labelFor="@id/text_view_title"/>
+
+    <TextView
+        style="@style/TextView_newItem"
+        android:id="@+id/text_view_description"
+        android:text="@string/description"/>
+
+    <EditText
+        style="@style/EditText_NewItem"
+        android:id="@+id/edit_text_description"
+        android:inputType="textLongMessage"
+        android:labelFor="@id/text_view_description"/>
+
+    <TextView
+        style="@style/TextView_newItem"
+        android:id="@+id/text_view_ingredients"
+        android:text="@string/ingredients"/>
+
+    <EditText
+        style="@style/EditText_NewItem"
+        android:id="@+id/edit_text_ingredients"
+        android:autofillHints="@string/title_view"
+        android:labelFor="@id/text_view_ingredients"/>
+
+    <TextView
+        style="@style/TextView_newItem"
+        android:id="@+id/text_view_calories"
+        android:text="@string/calories"/>
+
+    <EditText
+        style="@style/EditText_NewItem"
+        android:id="@+id/edit_text_calories"
+        android:inputType="number"
+        android:labelFor="@id/text_view_calories"/>
+
+    <TextView
+        style="@style/TextView_newItem"
+        android:id="@+id/text_view_link"
+        android:text="@string/link_to_recipe"/>
+
+    <EditText
+        style="@style/EditText_NewItem"
+        android:id="@+id/edit_text_link"
+        android:labelFor="@id/text_view_link"/>
+
+    <Button
+        android:id="@+id/add_meal_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_new_meal_button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
+        android:onClick="addMeal"/>
+
+
+</LinearLayout>
