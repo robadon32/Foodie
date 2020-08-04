@@ -50,7 +50,6 @@ public class MealItemAdapter extends RecyclerView.Adapter<MealItemAdapter.ViewHo
 
         private TextView titleView, calorieView;
         private ImageView mealView;
-        private MealItemAdapter mealItemAdapter;
 
         public ViewHolder(View itemView) {
             super(itemView);

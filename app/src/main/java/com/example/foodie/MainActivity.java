@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
@@ -21,14 +22,17 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private static int FAB_REQUEST_CODE = 1;
+    MealReceiver mealReceiver;
     MealItemAdapter mealAdapter;
-    ArrayList<MealItem> mealData;
+    protected static ArrayList<MealItem> mealData;
     RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mealReceiver = new MealReceiver();
         int gridColumnCount = getResources().getInteger(R.integer.grid_layout_count);
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -49,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.example.I_AM_HOME");
+        this.registerReceiver(mealReceiver, intentFilter);
     }
 
     private void startAddMealItemActivity() {
@@ -62,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == FAB_REQUEST_CODE && resultCode == RESULT_OK) {
+            assert data != null;
             String mealItemTitle = data.getStringExtra(AddItemActivity.MEAL_TITLE_EXTRA);
             String mealItemDescription = data.getStringExtra(AddItemActivity.MEAL_DESCRIPTION_EXTRA);
             String mealItemIngredients = data.getStringExtra(AddItemActivity.MEAL_INGREDIENTS_EXTRA);
@@ -94,5 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewMeal(View view) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        this.unregisterReceiver(mealReceiver);
+        super.onDestroy();
     }
 }
